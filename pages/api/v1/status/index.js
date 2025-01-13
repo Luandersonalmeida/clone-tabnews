@@ -2,12 +2,16 @@ import database from "infra/database.js";
 
 async function status(request, response) {
   const updatedAt = new Date().toISOString();
-  const postgresVersion = await database.query("SHOW server_version;");
+  const databaseVersionResult = await database.query("SHOW server_version;");
+  const databaseVersionValue = databaseVersionResult.rows[0].server_version;
   response.status(200).json({
     updated_at: updatedAt,
-    postgres_version: postgresVersion.rows[0].server_version,
+    dependencies: {
+      database: {
+        version: databaseVersionValue,
+      },
+    },
   });
-  console.log("teste", postgresVersion.rows[0].server_version);
 }
 
 export default status;
