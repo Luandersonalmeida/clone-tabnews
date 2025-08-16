@@ -14,7 +14,6 @@ jobs:
           node-version: "lts/hydrogen"
       - run: npm ci
       - run: npm run lint:prettier:check
-
   eslint:
     name: Eslint
     runs-on: ubuntu-latest
