@@ -5,7 +5,7 @@ beforeAll(async () => {
   await orchestrator.waitForAllServices();
   await database.query("drop schema public cascade; create schema public;");
 });
-test("POST /api/v1/mirations deve retornar 200", async () => {
+test("POST /api/v1/migrations deve retornar 200", async () => {
   const response1 = await fetch("http://localhost:3000/api/v1/migrations", {
     method: "POST",
   });
@@ -20,7 +20,7 @@ test("POST /api/v1/mirations deve retornar 200", async () => {
   expect(response1Body.length).toBeGreaterThan(0);
 });
 
-test("POST /api/v1/mirations deve retornar 200", async () => {
+test("POST api/v1/migrations deve retornar 200", async () => {
   const response2 = await fetch("http://localhost:3000/api/v1/migrations", {
     method: "POST",
   });
